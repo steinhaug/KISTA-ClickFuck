@@ -1,0 +1,4 @@
+selenium-stealth
+selenium
+flake8
+pytest
