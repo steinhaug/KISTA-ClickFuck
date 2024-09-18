@@ -8,9 +8,11 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
-# Working
+varChromeDriver = "G:\\chrome-webdrivers\\129-chromedriver-win64\\chromedriver.exe"
+varChromeHeadlessShell = "G:\\chrome-webdrivers\\129-chrome-headless-shell-win64\\chrome-headless-shell.exe"
+varChrome = "G:\\chrome-webdrivers\\129-chrome-win64\\chrome.exe"
 
-service = Service(executable_path='G:\chrome-webdrivers\chromedriver-win64\chromedriver.exe')
+service = Service(executable_path=varChromeDriver)
 options = webdriver.ChromeOptions()
 options.add_argument("start-maximized")
 options.add_experimental_option("excludeSwitches", ["enable-automation"])
