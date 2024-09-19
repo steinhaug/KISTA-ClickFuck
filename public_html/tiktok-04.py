@@ -8,12 +8,14 @@ from selenium.webdriver.chrome.service import Service
 import time
 import os
 
+# url: https://css2xpath.github.io/
+
 varChromeService = 'G:\\chrome-webdrivers\\129-chromedriver-win64\\chromedriver.exe'
 varUserDataDir = "I:\\python-htdocs\\KISTA-ClickFuck\\public_html\\mySessionCache-04"
 varHTMLlog = "I:/python-htdocs/KISTA-ClickFuck/public_html/html-log.txt"
 
-#urlMeta = ["https://www.tiktok.com", "main-content-homepage_hot", '[data-e2e="recommend-list-item-container"]']
-urlMeta = ["https://www.tiktok.com/search?q=welding&t=1726737305811", "main-content-general_search", "main-content-homepage_hot", '//data-e2e="search_top-item-list"']
+urlMeta = ["https://www.tiktok.com", "main-content-homepage_hot", '[data-e2e="recommend-list-item-container"]']
+#urlMeta = ["https://www.tiktok.com/search?q=welding&t=1726737305811", "main-content-general_search", "main-content-homepage_hot", '//data-e2e="search_top-item-list"']
 
 def setup_driver():
     service = Service(executable_path=varChromeService)

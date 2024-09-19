@@ -4,3 +4,4 @@ public_html/__pycache__
 public_html/mySessionCache-*/**/*
 public_html/screens/
 public_html/html-log.txt
+public_html/selenium
