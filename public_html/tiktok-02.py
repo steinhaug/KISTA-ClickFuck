@@ -37,7 +37,6 @@ stealth(driver,
 #time.sleep(5)
 #driver.quit()
 
-
 try:
         # Step 2: Launch URL (TikTok as an example) and wait for it to load
         url = "https://www.tiktok.com"

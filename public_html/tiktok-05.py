@@ -14,6 +14,13 @@ varChrome = "G:\\chrome-webdrivers\\129-chrome-win64\\chrome.exe"
 
 # working
 
+url1 = "https://www.tiktok.com/search?q=welding&t=1726737305811"
+url2 = 'https://www.tiktok.com'
+
+htmlId1 = "main-content-general_search"
+htmlId2 = "main-content-general_search"
+
+
 # Function to setup and run browser automation
 def run_session():
     # Setting up Chrome options to use a persistent session
@@ -39,11 +46,9 @@ def run_session():
         fix_hairline=True,
     )
 
-    
-
     try:
         # Step 2: Launch URL (TikTok as an example) and wait for it to load
-        driver.get('https://www.tiktok.com')
+        driver.get(url1)
         print("Page loaded...")
 
         # Step 3: Click a link (replace with an actual ad link selector if needed)
@@ -51,12 +56,12 @@ def run_session():
 
             # https://selenium-python.readthedocs.io/waits.html
             element = WebDriverWait(driver, 10).until(
-                EC.presence_of_element_located((By.ID, "main-content-homepage_hot"))
+                #EC.presence_of_element_located((By.ID, htmlId1))
+                EC.presence_of_element_located((By.ID, htmlId1))
             )
             print("Page loaded... Check.")
 
-
-            link = driver.find_element(by=By.XPATH, value='//a[@target="_blank"]')
+            link = driver.find_element(by=By.XPATH, value='//data-e2e="search_top-item-list"') #//a[@target="_blank"]
             link.click()
             time.sleep(2)  # Wait for page to load after click
             print("Navigated to ad page")
@@ -65,7 +70,11 @@ def run_session():
 
         # Step 4: Look for an ad on the page (update with the actual ad selector)
         try:
-            ad = driver.find_element(By.XPATH,"//div/ad-selector")
+
+            #'data-e2e="search-card-user-link"'
+            #'//data-e2e="search-card-like-container"'
+
+            ad = driver.find_element(By.XPATH, '//data-e2e="search-card-user-link"')
             ad.click()
             print('Ad clicked')
         except NoSuchElementException:
@@ -77,6 +86,8 @@ def run_session():
     finally:
         # Close the browser after the run
         driver.quit()
+
+time.sleep(5)  
 
 # Run the session
 run_session()

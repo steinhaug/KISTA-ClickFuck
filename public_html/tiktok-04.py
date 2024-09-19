@@ -12,6 +12,9 @@ varChromeService = 'G:\\chrome-webdrivers\\129-chromedriver-win64\\chromedriver.
 varUserDataDir = "I:\\python-htdocs\\KISTA-ClickFuck\\public_html\\mySessionCache-04"
 varHTMLlog = "I:/python-htdocs/KISTA-ClickFuck/public_html/html-log.txt"
 
+#urlMeta = ["https://www.tiktok.com", "main-content-homepage_hot", '[data-e2e="recommend-list-item-container"]']
+urlMeta = ["https://www.tiktok.com/search?q=welding&t=1726737305811", "main-content-general_search", "main-content-homepage_hot", '//data-e2e="search_top-item-list"']
+
 def setup_driver():
     service = Service(executable_path=varChromeService)
     chrome_options = Options()
@@ -22,7 +25,7 @@ def setup_driver():
 
 def scroll_and_capture(driver, scroll_count):
     main_content = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "main-content-homepage_hot"))
+        EC.presence_of_element_located((By.ID, urlMeta[1]))
     )
 
     for i in range(scroll_count):
@@ -30,14 +33,14 @@ def scroll_and_capture(driver, scroll_count):
         driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", main_content)
         
         # Wait for new content to load
-        time.sleep(5)  # Adjust this value based on page load time
+        time.sleep(5)
         
         # Take screenshot
         timestamp = int(time.time())
-        driver.save_screenshot(f"ss-{timestamp}-{i+1}.png")
+        driver.save_screenshot(f"screens/ss-{timestamp}-{i+1}.png")
         
         # Extract and save HTML
-        items = driver.find_elements(By.CSS_SELECTOR, '[data-e2e="recommend-list-item-container"]')
+        items = driver.find_elements(By.CSS_SELECTOR, urlMeta[2])
         html_content = "\n".join([item.get_attribute('outerHTML') for item in items])
         
         with open(varHTMLlog, "a", encoding="utf-8") as f:
@@ -47,7 +50,7 @@ def scroll_and_capture(driver, scroll_count):
 def main():
     driver = setup_driver()
     try:
-        driver.get("https://www.tiktok.com")
+        driver.get(urlMeta[0])
         scroll_and_capture(driver, 3)  # Scroll and capture 3 times
     finally:
         driver.quit()
