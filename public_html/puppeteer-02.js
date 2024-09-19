@@ -1,6 +1,3 @@
-node_modules/**.*
-public_html/mySessionCache/**/*
-public_html/mySessionCache2/**/*
 const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 
@@ -13,8 +10,6 @@ async function scrollAndCapture(page, scrollCount) {
             }
         });
 
-        // Wait for new content to load
-        await page.waitForTimeout(5000);  // Adjust based on page load time
 
         // Take screenshot
         const timestamp = Date.now();
@@ -34,7 +29,7 @@ async function scrollAndCapture(page, scrollCount) {
 async function main() {
     const browser = await puppeteer.launch({
         headless: true,
-        userDataDir: '/path/to/your/cache/directory'
+        userDataDir: "I:\\python-htdocs\\KISTA-ClickFuck\\public_html\\mySessionCache-04"
     });
     const page = await browser.newPage();
 

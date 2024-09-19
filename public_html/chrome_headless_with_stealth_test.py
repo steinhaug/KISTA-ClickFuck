@@ -7,9 +7,11 @@ import pytest
 import time
 import os
 
+varChromeDriver = "G:\\chrome-webdrivers\\129-chromedriver-win64\\chromedriver.exe"
 
 @pytest.fixture
 def browser_data():
+    service = Service(executable_path=varChromeService)
     options = webdriver.ChromeOptions()
     options.add_argument("start-maximized")
     options.add_argument("--headless")
@@ -20,7 +22,7 @@ def browser_data():
 
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option('useAutomationExtension', False)
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(service=service, options=options)
 
     stealth(driver,
             languages=["en-US", "en"],

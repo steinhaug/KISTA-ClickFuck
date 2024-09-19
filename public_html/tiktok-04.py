@@ -9,7 +9,6 @@ import time
 import os
 
 varChromeService = 'G:\\chrome-webdrivers\\129-chromedriver-win64\\chromedriver.exe'
-varChromeService1 = 'G:\\chrome-webdrivers\\chromedriver-win64-dev\\chromedriver.exe'
 varUserDataDir = "I:\\python-htdocs\\KISTA-ClickFuck\\public_html\\mySessionCache-04"
 varHTMLlog = "I:/python-htdocs/KISTA-ClickFuck/public_html/html-log.txt"
 
